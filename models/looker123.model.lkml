@@ -7,6 +7,20 @@ datagroup: looker123_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
+datagroup: orders_datagroup {
+  label: "Orders Datagroup"
+  sql_trigger: SELECT MAX(id) FROM orders;;
+  max_cache_age: "30 minutes"
+}
+
+datagroup: users_datagroup {
+  sql_trigger: SELECT MAX(id) FROM orders;;
+  max_cache_age: "15 hours"
+}
+
+
+persist_with: looker123_default_datagroup
+persist_with: orders_datagroup
 
 persist_with: looker123_default_datagroup
 
@@ -39,6 +53,8 @@ explore: countries {}
 explore: customer {}
 
 explore: day_of_week {}
+
+explore: praba_newview {}
 
 explore: demo_visits_data {
   join: users {
